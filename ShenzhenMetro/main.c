@@ -23,18 +23,13 @@ void mainmenu(Graph *graph) {
 		mainmenu(graph); 
 	}
 	else
-		submenu(s,graph);		
+		submenu(s, graph);		
 } 
 
 /* A sub-class menu */
 void submenu(int q, Graph *graph) { 
-	int i,j;
-	int s,e;
-	int x,y;
-	char cs,ce;
-	
-	x=sizeof(s);
-	y=sizeof(cs);
+	int i;
+	int s,e;	//Initial the input of the start station and end station 
 
 	switch(q)
 	{
@@ -171,8 +166,9 @@ void submenu(int q, Graph *graph) {
 					break;
 			}
 		break;
-	case 2:
-		printf("Find the path\n");
+	case 2: 
+		printf("This function is not be supported to use now!\nWe are sorry.\n");
+		/*printf("Find the path\n");
 		printf("Please input start station (ID): ");
 		scanf("%d", &s); 
 		printf("Please input end station (ID): ");
@@ -188,7 +184,7 @@ void submenu(int q, Graph *graph) {
 			printf("please input a correct station id!\n");
 		}
 		else
-			BFS(graph, s, e); 
+			BFS(graph, s, e); */ 
 		break;
 	case 3:
 		printf("Buy you ticket\n");
@@ -248,12 +244,11 @@ void FareCalculator (Table *T,int s, int e) {
 	printf("========================================\n");
 } 
 
-ListNode* recursion(Table *T, int e,ListNode *head) {
+ListNode* recursion(Table *T, int e, ListNode *head) {
 	while(e != 0)
 	{
 		InsertNode(T[e].path, head);
 		e = T[e].path;
-		recursion(T,e,head);
 	}
 	return head;	
 }
@@ -287,16 +282,16 @@ void BFS(Graph *graph, int start, int end) {
 			} 
 			p = p->next;
 		} 
-	}	
+	}	 	
+//	FareCalculator(T,s,e);
 	
-	FareCalculator(T,s,e);
+	recursion(T,e,head);
 	
-	//recursion(T,e,head);
+	DisplayLinkedList(head);
 	
-	//DisplayLinkedList(head);
-	
-	//DisplayTable(T);	//Function for viewing the entire table, you can eliminate the the symbol of annotation for checking the whole table
-	//DisposeQueue(Q);	//This function did not be created, coming soon	
+//	DisplayTable(T);	//Function for viewing the entire table, you can eliminate the the symbol of annotation for checking the whole table
+
+//	DisposeQueue(Q);	//This function did not be created, coming soon	
 }
 
 int main(int argc, char *argv[]) {		
