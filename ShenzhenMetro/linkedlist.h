@@ -3,30 +3,29 @@ typedef int DataType;
 typedef struct node {
 	DataType data;
 	struct node *next;
-}ListNode;
+}LinkNode;
 
 //ListNode *head = NULL;
  
-ListNode* newListNode(int e) {
-	ListNode *newNode = (ListNode*)malloc(sizeof(ListNode)); 
+LinkNode* newLinkNode(int e) {
+	LinkNode *newNode = (LinkNode*)malloc(sizeof(LinkNode)); 
 	if (NULL == newNode)
-		printf("the memory do not be allocate successfully\n");
+		exit(1);
 	newNode->data = e;
 	newNode->next = NULL;
 	 
 	return newNode;
 }
 
-ListNode* InsertNode(int e,ListNode *head) {
-	ListNode *newNode = newListNode(e);
-	newNode->next = head;
-	head = newNode;
-	
-	return head;
+void InsertNode(int e,LinkNode **head) {
+	LinkNode *newNode = newLinkNode(e);
+	newNode->next = *head;
+	*head = newNode;
+
 }
 
-void DisplayLinkedList(ListNode *head) {
-	ListNode *temp = head;
+void DisplayLinkedList(LinkNode *head) {
+	LinkNode *temp = head;
 	while(temp != NULL)
 	{
 		printf("%d\n",temp->data);

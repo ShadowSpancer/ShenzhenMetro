@@ -244,20 +244,19 @@ void FareCalculator (Table *T,int s, int e) {
 	printf("========================================\n");
 } 
 
-ListNode* ShortestPath(Table *T, int e, ListNode *head) {
+void* ShortestPath(Table *T, int e, LinkNode **head) {
 	while(T[e].path != 999)
 	{
-		InsertNode(T[e].path, &head);
+		InsertNode(T[e].path, head);
 		e = T[e].path;
-	}
-	return head;	
+	}	
 }
 
 void BFS(Graph *graph, int start, int end) {
 	int s = start, e = end;
 	int V, W;
 	
-	ListNode *head = NULL;
+	LinkNode *head = NULL;
 	Table T[TotalStation]; InitTable(s,T);
 	AdjNode *p = NULL; 
 	Queue *Q = NULL;
