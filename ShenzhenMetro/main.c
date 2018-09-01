@@ -27,7 +27,7 @@ void mainmenu(Graph *graph) {
 		submenu(s, graph);		
 } 
 
-/* A sub-class menu */
+/* The sub menu */
 void submenu(int q, Graph *graph) { 
 	int i;
 	int s, e;	//Initial the input of the start station and end station 
@@ -181,8 +181,10 @@ void submenu(int q, Graph *graph) {
 		
 		if(s==e)
 		{
-			printf("Could not input same start station and end station\n");
-			mainmenu(graph);
+			q = 2;
+			printf("It is not allow that input same start station and end station!\n\n");
+			printf("Please input your start station and end station again\n");
+			submenu(q, graph);
 		}
 		else if(s<0 || s>165 || e<0 || e>165)
 		{
@@ -203,8 +205,10 @@ void submenu(int q, Graph *graph) {
 		
 		if(s==e)
 		{
-			printf("Could not input same start station and end station\n");
-			mainmenu(graph);
+			q = 3;
+			printf("It is not allow that input same start station and end station!\n\n");
+			printf("Please input your start station and end station again\n");
+			submenu(q, graph);
 		}
 		else if(s<0 || s>165 || e<0 || e>165)
 		{
@@ -222,8 +226,6 @@ void submenu(int q, Graph *graph) {
 		break; 
 	}
 } 
-
-
 
 int main(int argc, char *argv[]) {		
 	FILE *fp = NULL;		//Initialing a object of FILE 
