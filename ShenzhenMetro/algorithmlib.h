@@ -35,8 +35,7 @@ void BFS(Graph *graph, int start, int end, int q) {
 	{
 		printf("The recommendation path is: "); 
 		ShortestPath(T, e, &head);
-		
-		DisplayLinkedList(head, e);
+		DisplayShortestPath(head, e);
 	}
 	
 //	DisplayTable(T);	//Function for viewing the entire table, you can eliminate the the symbol of annotation for checking the whole table
@@ -83,3 +82,14 @@ void ShortestPath(Table *T, int e, LinkNode **head) {
 		e = T[e].path;
 	}	
 }
+
+void DisplayShortestPath(LinkNode *head, int e) {
+	LinkNode *temp = head;
+	while(temp != NULL)
+	{
+		printf("%s",sd[temp->data].name);
+		temp = temp->next;
+	} 
+	printf("%s",sd[e].name);	
+}
+
