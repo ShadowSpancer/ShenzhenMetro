@@ -227,13 +227,11 @@ void submenu(int q, Graph *graph) {
 	}
 } 
 
-int main(int argc, char *argv[]) {		
+void Dictionary() {
 	FILE *fp = NULL;		//Initialing a object of FILE 
 	int i = 0;				//Creating a factor of loop
 	int j = 0;				//Creating a factor of loop
-	//int len = 0;			//Testing the length of array content 
-	
-/* Loading a station dictionary */
+	/* Loading a station dictionary */
 	printf("Loading the dictionary of the station......\n"); 
 	fp = fopen("file\\Metro.txt","r");
 	if (!fp)
@@ -243,11 +241,16 @@ int main(int argc, char *argv[]) {
 		fgets(sd[i++].name,50,fp);
 	}
 	fclose(fp);		//Closing the FILE stream 
-/* Loading a station dictionary */
+	/* Loading a station dictionary */
+} 
 
-/* Loading the station of each line and mapping from name to id */
-/* Tips: this section can add a Queue to avoid double loop that will cause time complexity equal to O(n^2) 
-   especially some extreme situation, such as the inner loop was be performed until reach the [i]==165 */
+void Mapping() {
+	FILE *fp = NULL;		//Initialing a object of FILE 
+	int i = 0;				//Creating a factor of loop
+	int j = 0;				//Creating a factor of loop
+	/* Loading the station of each line and mapping from name to id */
+	/* Tips: this section can add a Queue to avoid double loop that will cause time complexity equal to O(n^2) 
+   		especially some extreme situation, such as the inner loop was be performed until reach the [i]==165 */
 	printf("Mapping from name to id for each station of each line......\n"); 
 	//Mapping the line 1	
 	fp = fopen("file\\Line1.txt","r");
@@ -433,57 +436,66 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	printf("Loading success......\nMapping success......\nWelcome to Shenzhen Metro System!\n");
-/* Loading the station of each line and mapping from name to id */	
+	/* Loading the station of each line and mapping from name to id */
+} 
 
-/* Generating a new graph */
+void GenerateGraph(Graph **graph) {
+	int i = 0;				//Initial the factor of loop
+	int j = 0;				//Initial a factor of loop
 	int V = TotalStation;
-	Graph *graph = newGraph(V);
-
+	*graph = newGraph(V);
+	/* Generating graph */
 	for(i=0; i<29; i++)
 	{
 		j=i+1;
-		connectNodes(graph, line1[i].id, line1[j].id);
+		connectNodes(*graph, line1[i].id, line1[j].id);
 	} 
 	for(i=0; i<28; i++)
 	{
 		j=i+1;
-		connectNodes(graph, line2[i].id, line2[j].id);
+		connectNodes(*graph, line2[i].id, line2[j].id);
 	} 
 	for(i=0; i<29; i++)
 	{
 		j=i+1;
-		connectNodes(graph, line3[i].id, line3[j].id);
+		connectNodes(*graph, line3[i].id, line3[j].id);
 	} 
 	for(i=0; i<14; i++)
 	{
 		j=i+1;
-		connectNodes(graph, line4[i].id, line4[j].id);
+		connectNodes(*graph, line4[i].id, line4[j].id);
 	} 
 	for(i=0; i<26; i++)
 	{
 		j=i+1;
-		connectNodes(graph, line5[i].id, line5[j].id);
+		connectNodes(*graph, line5[i].id, line5[j].id);
 	} 
 	for(i=0; i<27; i++)
 	{
 		j=i+1;
-		connectNodes(graph, line7[i].id, line7[j].id);
+		connectNodes(*graph, line7[i].id, line7[j].id);
 	} 
 	for(i=0; i<21; i++)
 	{
 		j=i+1;
-		connectNodes(graph, line9[i].id, line9[j].id);
+		connectNodes(*graph, line9[i].id, line9[j].id);
 	}
 	for(i=0; i<17; i++)
 	{
 		j=i+1;
-		connectNodes(graph, line11[i].id, line11[j].id);
+		connectNodes(*graph, line11[i].id, line11[j].id);
 	}  
-	 
 	//printf("\n"); printGraph(graph);
-/* Generating a new graph */
-	
-	//testing();
+	/* Generating graph */ 
+}
+
+int main(int argc, char *argv[]) {		
+	Graph *graph;	//Initial a graph
+
+	Dictionary(); 
+	Mapping();
+	GenerateGraph(&graph);
+
 	printf("\n");
 	mainmenu(graph);
 		
