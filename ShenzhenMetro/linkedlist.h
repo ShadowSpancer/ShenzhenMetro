@@ -9,6 +9,8 @@ typedef struct node {
  
 ListNode* newListNode(int e) {
 	ListNode *newNode = (ListNode*)malloc(sizeof(ListNode)); 
+	if (NULL == newNode)
+		printf("the memory do not be allocate successfully\n");
 	newNode->data = e;
 	newNode->next = NULL;
 	 

@@ -244,17 +244,16 @@ void FareCalculator (Table *T,int s, int e) {
 	printf("========================================\n");
 } 
 
-ListNode* recursion(Table *T, int e, ListNode *head) {
-	while(e != 0)
+ListNode* ShortestPath(Table *T, int e, ListNode *head) {
+	while(T[e].path != 999)
 	{
-		InsertNode(T[e].path, head);
+		InsertNode(T[e].path, &head);
 		e = T[e].path;
 	}
 	return head;	
 }
 
 void BFS(Graph *graph, int start, int end) {
-	int i; 
 	int s = start, e = end;
 	int V, W;
 	
@@ -285,7 +284,7 @@ void BFS(Graph *graph, int start, int end) {
 	}	 	
 //	FareCalculator(T,s,e);
 	
-	recursion(T,e,head);
+	ShortestPath(T,e,&head);
 	
 	DisplayLinkedList(head);
 	

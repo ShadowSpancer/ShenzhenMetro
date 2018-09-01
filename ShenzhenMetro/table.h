@@ -19,7 +19,7 @@ void InitTable(int VertexStart, Table *T) {
 		T[i].id = i;
 		T[i].known = FALSE;
 		T[i].dist = INT_MAX;
-		T[i].path = 0;
+		T[i].path = 999;
 	}
 	T[VertexStart].dist = 0; 
 }
