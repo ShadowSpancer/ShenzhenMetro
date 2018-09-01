@@ -59,8 +59,8 @@ void submenu(int q, Graph *graph) {
 						printf("ID: %d,  Station: %s", line1[i].id, line1[i].name); 
 					}
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &s);
-					if(s==0)
+					scanf("%d", &q);
+					if(q==0)
 					{
 						printf("\n");
 						mainmenu(graph);
@@ -73,8 +73,8 @@ void submenu(int q, Graph *graph) {
 						printf("ID: %d,  Station: %s", line2[i].id, line2[i].name); 
 					} 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &s);
-					if(s==0)
+					scanf("%d", &q);
+					if(q==0)
 					{
 						printf("\n");
 						mainmenu(graph);
@@ -87,8 +87,8 @@ void submenu(int q, Graph *graph) {
 						printf("ID: %d,  Station: %s", line3[i].id, line3[i].name); 
 					} 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &s);
-					if(s==0)
+					scanf("%d", &q);
+					if(q==0)
 					{
 						printf("\n");
 						mainmenu(graph);
@@ -101,8 +101,8 @@ void submenu(int q, Graph *graph) {
 						printf("ID: %d,  Station: %s", line4[i].id, line4[i].name); 
 					} 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &s);
-					if(s==0)
+					scanf("%d", &q);
+					if(q==0)
 					{
 						printf("\n");
 						mainmenu(graph);
@@ -115,8 +115,8 @@ void submenu(int q, Graph *graph) {
 						printf("ID: %d,  Station: %s", line5[i].id, line5[i].name); 
 					} 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &s);
-					if(s==0)
+					scanf("%d", &q);
+					if(q==0)
 					{
 						printf("\n");
 						mainmenu(graph);
@@ -129,8 +129,8 @@ void submenu(int q, Graph *graph) {
 						printf("ID: %d,  Station: %s", line7[i].id, line7[i].name); 
 					} 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &s);
-					if(s==0)
+					scanf("%d", &q);
+					if(q==0)
 					{
 						printf("\n");
 						mainmenu(graph);
@@ -143,8 +143,8 @@ void submenu(int q, Graph *graph) {
 						printf("ID: %d,  Station: %s", line9[i].id, line9[i].name); 
 					} 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &s);
-					if(s==0)
+					scanf("%d", &q);
+					if(q==0)
 					{
 						printf("\n");
 						mainmenu(graph);
@@ -157,8 +157,8 @@ void submenu(int q, Graph *graph) {
 						printf("ID: %d,  Station: %s", line11[i].id, line11[i].name);
 					} 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &s);
-					if(s==0)
+					scanf("%d", &q);
+					if(q==0)
 					{
 						printf("\n");
 						mainmenu(graph);
@@ -167,8 +167,7 @@ void submenu(int q, Graph *graph) {
 			}
 		break;
 	case 2: 
-		printf("This function is not be supported to use now!\nWe are sorry.\n");
-		/*printf("Find the path\n");
+		printf("Find the path\n");
 		printf("Please input start station (ID): ");
 		scanf("%d", &s); 
 		printf("Please input end station (ID): ");
@@ -184,7 +183,7 @@ void submenu(int q, Graph *graph) {
 			printf("please input a correct station id!\n");
 		}
 		else
-			BFS(graph, s, e); */ 
+			BFS(graph, s, e, q); 
 		break;
 	case 3:
 		printf("Buy you ticket\n");
@@ -203,7 +202,7 @@ void submenu(int q, Graph *graph) {
 			printf("please input a correct station id!\n");
 		}
 		else
-			BFS(graph, s, e);
+			BFS(graph, s, e, q);
 		break;
 	default:
 		printf("Please input a correct option!");
@@ -244,7 +243,7 @@ void FareCalculator (Table *T,int s, int e) {
 	printf("========================================\n");
 } 
 
-void* ShortestPath(Table *T, int e, LinkNode **head) {
+void ShortestPath(Table *T, int e, LinkNode **head) {
 	while(T[e].path != 999)
 	{
 		InsertNode(T[e].path, head);
@@ -252,7 +251,7 @@ void* ShortestPath(Table *T, int e, LinkNode **head) {
 	}	
 }
 
-void BFS(Graph *graph, int start, int end) {
+void BFS(Graph *graph, int start, int end, int q) {
 	int s = start, e = end;
 	int V, W;
 	
@@ -280,12 +279,16 @@ void BFS(Graph *graph, int start, int end) {
 			} 
 			p = p->next;
 		} 
-	}	 	
-//	FareCalculator(T,s,e);
+	}
 	
-	ShortestPath(T,e,&head);
-	
-	DisplayLinkedList(head);
+	if(q==3)	 	
+		FareCalculator(T,s,e);
+	else if(q==2)
+	{
+		ShortestPath(T,e,&head);
+		DisplayLinkedList(head);
+	}
+
 	
 //	DisplayTable(T);	//Function for viewing the entire table, you can eliminate the the symbol of annotation for checking the whole table
 
