@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
-#include "adjancencylist.h"
 #include "dictionary.h"
-#include "queue.h"
-#include "linkedlist.h" 
+#include "adjancencylist.h"
+#include "queue.h" 
 #include "table.h"
-#include "algorithmlib.h" 
+#include "linkedlist.h"
+#include "algorithmlib.h"
 #include "test.h"
 
 /* The main menu */
