@@ -21,15 +21,15 @@ void InsertNode(int e,LinkNode **head) {
 	LinkNode *newNode = newLinkNode(e);
 	newNode->next = *head;
 	*head = newNode;
-
 }
 
-void DisplayLinkedList(LinkNode *head) {
+void DisplayLinkedList(LinkNode *head,int e) {
 	LinkNode *temp = head;
 	while(temp != NULL)
 	{
-		printf("%d\n",temp->data);
+		printf("%d-",temp->data);
 		temp = temp->next;
 	} 
+	printf("%d",e);
 } 
 
