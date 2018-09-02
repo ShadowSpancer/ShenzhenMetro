@@ -30,8 +30,7 @@ void mainmenu(Graph *graph) {
 /* The sub menu */
 void submenu(int q, Graph *graph) { 
 	int i;
-	int s, e;	//Initial the input of the start station and end station 
-
+	int s, e;		//Initial the input of the start station and end station 
 	switch(q)
 	{
 	case 1:
@@ -61,9 +60,7 @@ void submenu(int q, Graph *graph) {
 				case 1:
 					printf("1.Line 1 ('Luohu' <---> 'Airport East')\n");
 					for(i=0; i<30; i++)
-					{
-						printf("ID: %d,  Station: %s", line1[i].id, line1[i].name); 
-					}
+						printf("ID: %d,  Station: %s\n", line1[i].id, line1[i].name); 
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &q);
 					if(q==0)
@@ -75,9 +72,7 @@ void submenu(int q, Graph *graph) {
 				case 2:
 					printf("2.Line 2 ('Xinxiu' <---> 'Chiwan')\n");
 					for(i=0; i<29; i++)
-					{
-						printf("ID: %d,  Station: %s", line2[i].id, line2[i].name); 
-					} 
+						printf("ID: %d,  Station: %s\n", line2[i].id, line2[i].name); 
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &q);
 					if(q==0)
@@ -89,9 +84,7 @@ void submenu(int q, Graph *graph) {
 				case 3:
 					printf("3.Line 3 ('Shuanglong' <---> 'Yitian')\n");
 					for(i=0; i<30; i++)
-					{
-						printf("ID: %d,  Station: %s", line3[i].id, line3[i].name); 
-					} 
+						printf("ID: %d,  Station: %s\n", line3[i].id, line3[i].name); 
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &q);
 					if(q==0)
@@ -103,9 +96,7 @@ void submenu(int q, Graph *graph) {
 				case 4:
 					printf("4.Line 4 ('Qinghu' <---> 'Futian Checkpoint')\n");
 					for(i=0; i<15; i++)
-					{
-						printf("ID: %d,  Station: %s", line4[i].id, line4[i].name); 
-					} 
+						printf("ID: %d,  Station: %s\n", line4[i].id, line4[i].name); 
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &q);
 					if(q==0)
@@ -117,9 +108,7 @@ void submenu(int q, Graph *graph) {
 				case 5:
 					printf("5.Line 5 ('Huangbeiling' <---> 'Qianhaiwan')\n");
 					for(i=0; i<27; i++)
-					{
-						printf("ID: %d,  Station: %s", line5[i].id, line5[i].name); 
-					} 
+						printf("ID: %d,  Station: %s\n", line5[i].id, line5[i].name);  
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &q);
 					if(q==0)
@@ -131,9 +120,7 @@ void submenu(int q, Graph *graph) {
 				case 6:
 					printf("6.Line 7 ('Tiaan' <---> 'Xili Lake')\n");
 					for(i=0; i<28; i++)
-					{
-						printf("ID: %d,  Station: %s", line7[i].id, line7[i].name); 
-					} 
+						printf("ID: %d,  Station: %s\n", line7[i].id, line7[i].name);  
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &q);
 					if(q==0)
@@ -145,9 +132,7 @@ void submenu(int q, Graph *graph) {
 				case 7:
 					printf("7.Line 9 ('Wenjin' <---> 'Hongshuwan South')\n");
 					for(i=0; i<22; i++)
-					{
-						printf("ID: %d,  Station: %s", line9[i].id, line9[i].name); 
-					} 
+						printf("ID: %d,  Station: %s\n", line9[i].id, line9[i].name);  
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &q);
 					if(q==0)
@@ -159,9 +144,7 @@ void submenu(int q, Graph *graph) {
 				case 8:
 					printf("8.Line 11 ('Futian' <---> 'Bitou')\n");
 					for(i=0; i<18; i++)
-					{
-						printf("ID: %d,  Station: %s", line11[i].id, line11[i].name);
-					} 
+						printf("ID: %d,  Station: %s\n", line11[i].id, line11[i].name);
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &q);
 					if(q==0)
@@ -228,9 +211,9 @@ void submenu(int q, Graph *graph) {
 } 
 
 void Dictionary() {
-	FILE *fp = NULL;		//Initialing a object of FILE 
-	int i = 0;				//Creating a factor of loop
-	int j = 0;				//Creating a factor of loop
+	FILE *fp = NULL;		//Initial a object of FILE 
+	int i = 0;				//Initial a factor of loop
+	int j = 0;				//Initial a factor of loop
 	/* Loading a station dictionary */
 	fp = fopen("file\\Metro.txt","r");
 	if (!fp)
@@ -243,17 +226,14 @@ void Dictionary() {
 	for(i=0;i<TotalStation;i++)
 	{
 		sd[i].name[strlen(sd[i].name)-1]='\0'; 
-//		printf("%s",sd[i].name);
-//		if (i<TotalStation-1)
-//			printf(" -> ");
 	}
 	/* Loading a station dictionary */
 } 
 
 void Mapping() {
-	FILE *fp = NULL;		//Initialing a object of FILE 
-	int i = 0;				//Creating a factor of loop
-	int j = 0;				//Creating a factor of loop
+	FILE *fp = NULL;		//Initial a object of FILE 
+	int i = 0;				//Initial a factor of loop
+	int j = 0;				//Initial a factor of loop
 	
 	/* Loading the station of each line and mapping from name to id */
 	/* Tips: this section can add a Queue to avoid double loop that will cause time complexity equal to O(n^2) 
@@ -264,22 +244,18 @@ void Mapping() {
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(line1[i++].name,50,fp);
-	}
 	fclose(fp);
 	for(j=0; j<30; j++)
 	{
 		line1[j].name[strlen(line1[j].name)-1]='\0'; 
 		line1[j].line=1;
 		for(i=0; i<TotalStation; i++)
-		{
 			if(strcmp(sd[i].name,line1[j].name)==0)
 			{
 				line1[j].id = i;
 				break;
 			}
-		}
 	}
 	
 	//Mapping the line 2
@@ -288,22 +264,18 @@ void Mapping() {
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(line2[i++].name,50,fp);
-	}
 	fclose(fp);
 	for(j=0; j<29; j++)
 	{
 		line2[j].name[strlen(line2[j].name)-1]='\0';
 		line2[j].line=2;
 		for(i=0; i<TotalStation; i++)
-		{
 			if(strcmp(sd[i].name,line2[j].name)==0)
 			{
 				line2[j].id = i;
 				break;
 			}
-		}
 	}
 	
 	//Mapping the line 3
@@ -312,22 +284,18 @@ void Mapping() {
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(line3[i++].name,50,fp);
-	}
 	fclose(fp);
 	for(j=0; j<30; j++)
 	{
 		line3[j].name[strlen(line3[j].name)-1]='\0';
 		line3[j].line=3;
 		for(i=0; i<TotalStation; i++)
-		{
 			if(strcmp(sd[i].name,line3[j].name)==0)
 			{
 				line3[j].id = i;
 				break;
 			}
-		}
 	}
 	
 	//Mapping the line 4
@@ -336,22 +304,18 @@ void Mapping() {
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(line4[i++].name,50,fp);
-	}
 	fclose(fp);
 	for(j=0; j<15; j++)
 	{
 		line4[j].name[strlen(line4[j].name)-1]='\0';
 		line4[j].line=4;
 		for(i=0; i<TotalStation; i++)
-		{
 			if(strcmp(sd[i].name,line4[j].name)==0)
 			{
 				line4[j].id = i;
 				break;
 			}
-		}
 	}
 	
 	//Mapping the line 5
@@ -360,22 +324,18 @@ void Mapping() {
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(line5[i++].name,50,fp);
-	}
 	fclose(fp);
 	for(j=0; j<27; j++)
 	{
 		line5[j].name[strlen(line5[j].name)-1]='\0';
 		line5[j].line=5;
 		for(i=0; i<TotalStation; i++)
-		{
 			if(strcmp(sd[i].name,line5[j].name)==0)
 			{
 				line5[j].id = i;
 				break;
 			}
-		}
 	}
 	
 	//Mapping the line 7
@@ -384,22 +344,18 @@ void Mapping() {
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(line7[i++].name,50,fp);	
-	}
 	fclose(fp);
 	for(j=0; j<28; j++)
 	{
 		line7[j].name[strlen(line7[j].name)-1]='\0';
 		line7[j].line=7;
 		for(i=0; i<TotalStation; i++)
-		{
 			if(strcmp(sd[i].name,line7[j].name)==0)
 			{
 				line7[j].id = i;
 				break;
 			}
-		}
 	}
 	
 	//Mapping the line 9
@@ -408,22 +364,18 @@ void Mapping() {
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(line9[i++].name,50,fp);		
-	}
 	fclose(fp);
 	for(j=0; j<22; j++)
 	{
 		line9[j].name[strlen(line9[j].name)-1]='\0';
 		line9[j].line=9;
 		for(i=0; i<TotalStation; i++)
-		{
 			if(strcmp(sd[i].name,line9[j].name)==0)
 			{
 				line9[j].id = i;
 				break;
 			}
-		}
 	}
 	
 	//Mapping the line 11
@@ -432,22 +384,18 @@ void Mapping() {
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(line11[i++].name,50,fp);		
-	}
 	fclose(fp);
 	for(j=0; j<18; j++)
 	{
 		line11[j].name[strlen(line11[j].name)-1]='\0';
 		line11[j].line=11;
 		for(i=0; i<TotalStation; i++)
-		{
 			if(strcmp(sd[i].name,line11[j].name)==0)
 			{
 				line11[j].id = i;
 				break;
 			}
-		}
 	}
 	/* Loading the station of each line and mapping from name to id */
 } 
