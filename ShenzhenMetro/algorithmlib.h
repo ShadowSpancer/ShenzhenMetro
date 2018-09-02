@@ -33,7 +33,7 @@ void BFS(Graph *graph, int start, int end, int q) {
 		FareCalculator(T, s, e);
 	else if(q==2)
 	{
-		printf("The recommendation path is: "); 
+		printf("The recommendation path is:\n"); 
 		ShortestPath(T, e, &head);
 		DisplayShortestPath(head, e);
 	}
@@ -66,13 +66,13 @@ void FareCalculator (Table *T, int s, int e) {
 		else
 			continue;	
 	}
-	printf("========================================\n");
+	printf("============================================\n");
 	printf(" WELCOME TO SHENZHEN METRO!\n");
 	printf(" Your ticket is:\n"); 
-	printf(" -From: %s -To: %s", cs, ce);
-	printf(" At least %d stops are required\n", T[e].dist);
+	printf(" -From: %s  -To: %s", cs, ce);
+	printf(" \n At least %d stops are required\n", T[e].dist);
 	printf(" The price of ticket is %f(Yuan)\n", fare);	
-	printf("========================================\n");
+	printf("============================================\n");
 } 
 
 void ShortestPath(Table *T, int e, LinkNode **head) {
@@ -89,6 +89,7 @@ void DisplayShortestPath(LinkNode *head, int e) {
 	{
 		printf("%s",sd[temp->data].name);
 		temp = temp->next;
+		printf(" -> "); 
 	} 
 	printf("%s",sd[e].name);	
 }
