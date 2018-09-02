@@ -232,7 +232,6 @@ void Dictionary() {
 	int i = 0;				//Creating a factor of loop
 	int j = 0;				//Creating a factor of loop
 	/* Loading a station dictionary */
-	printf("Loading the dictionary of the station......\n"); 
 	fp = fopen("file\\Metro.txt","r");
 	if (!fp)
 		return -1;
@@ -240,7 +239,14 @@ void Dictionary() {
 	{
 		fgets(sd[i++].name,50,fp);
 	}
-	fclose(fp);		//Closing the FILE stream 
+	fclose(fp);		//Closing the FILE stream
+	for(i=0;i<TotalStation;i++)
+	{
+		sd[i].name[strlen(sd[i].name)-1]='\0'; 
+//		printf("%s",sd[i].name);
+//		if (i<TotalStation-1)
+//			printf(" -> ");
+	}
 	/* Loading a station dictionary */
 } 
 
@@ -248,10 +254,10 @@ void Mapping() {
 	FILE *fp = NULL;		//Initialing a object of FILE 
 	int i = 0;				//Creating a factor of loop
 	int j = 0;				//Creating a factor of loop
+	
 	/* Loading the station of each line and mapping from name to id */
 	/* Tips: this section can add a Queue to avoid double loop that will cause time complexity equal to O(n^2) 
-   		especially some extreme situation, such as the inner loop was be performed until reach the [i]==165 */
-	printf("Mapping from name to id for each station of each line......\n"); 
+   		especially some extreme situation, such as the inner loop was be performed until reach the [i]==165 */ 
 	//Mapping the line 1	
 	fp = fopen("file\\Line1.txt","r");
 	i=0;			//Initialing the factor of loop
@@ -264,6 +270,7 @@ void Mapping() {
 	fclose(fp);
 	for(j=0; j<30; j++)
 	{
+		line1[j].name[strlen(line1[j].name)-1]='\0'; 
 		line1[j].line=1;
 		for(i=0; i<TotalStation; i++)
 		{
@@ -287,6 +294,7 @@ void Mapping() {
 	fclose(fp);
 	for(j=0; j<29; j++)
 	{
+		line2[j].name[strlen(line2[j].name)-1]='\0';
 		line2[j].line=2;
 		for(i=0; i<TotalStation; i++)
 		{
@@ -310,6 +318,7 @@ void Mapping() {
 	fclose(fp);
 	for(j=0; j<30; j++)
 	{
+		line3[j].name[strlen(line3[j].name)-1]='\0';
 		line3[j].line=3;
 		for(i=0; i<TotalStation; i++)
 		{
@@ -333,6 +342,7 @@ void Mapping() {
 	fclose(fp);
 	for(j=0; j<15; j++)
 	{
+		line4[j].name[strlen(line4[j].name)-1]='\0';
 		line4[j].line=4;
 		for(i=0; i<TotalStation; i++)
 		{
@@ -356,6 +366,7 @@ void Mapping() {
 	fclose(fp);
 	for(j=0; j<27; j++)
 	{
+		line5[j].name[strlen(line5[j].name)-1]='\0';
 		line5[j].line=5;
 		for(i=0; i<TotalStation; i++)
 		{
@@ -379,6 +390,7 @@ void Mapping() {
 	fclose(fp);
 	for(j=0; j<28; j++)
 	{
+		line7[j].name[strlen(line7[j].name)-1]='\0';
 		line7[j].line=7;
 		for(i=0; i<TotalStation; i++)
 		{
@@ -402,6 +414,7 @@ void Mapping() {
 	fclose(fp);
 	for(j=0; j<22; j++)
 	{
+		line9[j].name[strlen(line9[j].name)-1]='\0';
 		line9[j].line=9;
 		for(i=0; i<TotalStation; i++)
 		{
@@ -425,6 +438,7 @@ void Mapping() {
 	fclose(fp);
 	for(j=0; j<18; j++)
 	{
+		line11[j].name[strlen(line11[j].name)-1]='\0';
 		line11[j].line=11;
 		for(i=0; i<TotalStation; i++)
 		{
@@ -435,7 +449,6 @@ void Mapping() {
 			}
 		}
 	}
-	printf("Loading success......\nMapping success......\nWelcome to Shenzhen Metro System!\n");
 	/* Loading the station of each line and mapping from name to id */
 } 
 
@@ -496,7 +509,6 @@ int main(int argc, char *argv[]) {
 	Mapping();
 	GenerateGraph(&graph);
 
-	printf("\n");
 	mainmenu(graph);
 		
 	return 0;
