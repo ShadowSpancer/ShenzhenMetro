@@ -9,8 +9,6 @@ typedef struct {
 	int path;
 }Table;
 
-//Table T[TotalStation];
-
 void InitTable(int VertexStart, Table *T) {
 	int i;
 	

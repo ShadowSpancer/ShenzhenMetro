@@ -1,7 +1,8 @@
 //This Section is design for testing the function of loading info, this section can be comment out.
 //You can customize this section base on your needs 
 void testing() { 
-	int i,j; 
+	int i, j; 
+	
 	/* 
 	for (i=0; i<28; i++)
 	{
