@@ -33,13 +33,11 @@ void BFS(Graph *graph, int start, int end, int q) {
 		FareCalculator(T, s, e);
 	else if(q==2)
 	{
-		printf("The recommendation path is:\n"); 
 		ShortestPath(T, e, &head);
 		DisplayShortestPath(head, e);
 	}
 	
 //	DisplayTable(T);	//Function for viewing the entire table, you can eliminate the the symbol of annotation for checking the whole table
-
 //	DisposeQueue(Q);	//This function did not be created, coming soon	
 }
 
@@ -84,13 +82,14 @@ void ShortestPath(Table *T, int e, LinkNode **head) {
 }
 
 void DisplayShortestPath(LinkNode *head, int e) {
+	printf("The recommendation path is:\n"); 
 	LinkNode *temp = head;
 	while(temp != NULL)
 	{
-		printf("%s",sd[temp->data].name);
+		printf("%d.%s",temp->data,sd[temp->data].name);
 		temp = temp->next;
 		printf(" -> "); 
 	} 
-	printf("%s",sd[e].name);	
+	printf("%d.%s\n",e,sd[e].name);	
 }
 
