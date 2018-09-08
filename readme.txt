@@ -1,2 +1,2 @@
-This is a Shenzhen Metro system implementation base on graph theory.
-This is a demonstration was created by C language
+Software Development Environment: Dev-C++ (Version 5.1.1)
+Compiler: TDM-GCC 4.9.2 (64 bit)
