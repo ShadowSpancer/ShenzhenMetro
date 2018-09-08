@@ -19,7 +19,7 @@ void BFS(Graph *graph, int start, int end, int q) {
 		while(p != NULL)
 		{
 			W = p->pos;
-			if(T[W].dist == INT_MAX)
+			if(T[W].dist == Infinity)	//Infinity is INT_MAX, it was be defined at head file "table.h"
 			{
 				T[W].dist = T[V].dist + 1;
 				T[W].path = V;
@@ -42,24 +42,24 @@ void BFS(Graph *graph, int start, int end, int q) {
 }
 
 void FareCalculator (Table *T, int s, int e) {
+	float initialFare = 2;
+	float eachStationFare = 0.5;
+	float maximalFare = 14;
+	double fare;
 	int i;
 	void *cs, *ce;
-	double fare;
+	
 	for(i=0; i<TotalStation; i++)
 	{
 		if(T[i].id == s)
-		{
 			cs = &sd[i];
-		}	
 		else if(T[i].id == e)
 		{
 			ce = &sd[i];
 			if(T[i].dist <= 13)
-			{
-				fare = 2 + (T[i].dist - 1);
-			}
+				fare = initialFare + (T[i].dist * eachStationFare);
 			else
-				fare = 14;
+				fare = maximalFare;
 		}
 		else
 			continue;	
@@ -69,12 +69,13 @@ void FareCalculator (Table *T, int s, int e) {
 	printf(" Your ticket is:\n"); 
 	printf(" -From: %s  -To: %s", cs, ce);
 	printf(" \n At least %d stops are required\n", T[e].dist);
-	printf(" The price of ticket is %f(Yuan)\n", fare);	
+	printf(" The price of ticket is %0.2f(Yuan)\n", fare);	
 	printf("============================================\n");
 } 
 
 void ShortestPath(Table *T, int e, LinkNode **head) {
-	while(T[e].path != 999)
+	int InitialPath = 999; 
+	while(T[e].path != InitialPath)
 	{
 		InsertNode(T[e].path, head);
 		e = T[e].path;
@@ -82,7 +83,7 @@ void ShortestPath(Table *T, int e, LinkNode **head) {
 }
 
 void DisplayShortestPath(LinkNode *head, int e) {
-	printf("The recommendation path is:\n"); 
+	printf("The shortest path is:\n"); 
 	LinkNode *temp = head;
 	while(temp != NULL)
 	{

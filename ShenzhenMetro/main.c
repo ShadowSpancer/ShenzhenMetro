@@ -12,24 +12,25 @@
 
 /* The main menu */
 void mainmenu(Graph *graph) {
-	int s;
+	int q;
 	printf("Please select what kind of service you need:");
-	printf("\n1.Check the line\n2.Find a recommendation path\n3.Purchase a ticket");
+	printf("\n1.Check the line\n2.Find a shortest path\n3.Purchase a ticket");
 	printf("\nSELECT: ");
-	scanf("%d", &s);
+	scanf("%d", &q);
 	printf("\n");
-	if(s<1 || s>3)	//Existing a slight problem at here, if input is a not the type of int, that will cause a death loop;
+	if(q<1 || q>3)	//Existing a slight problem at here, if input is a not the type of int, that will cause a death loop;
 	{
 		printf("please input a correct option id!\n\n");
 		mainmenu(graph); 
 	}
 	else
-		submenu(s, graph);		
+		submenu(q, graph);		
 } 
 
 /* The sub menu */
 void submenu(int q, Graph *graph) { 
 	int i;
+	int temp;
 	int s, e;		//Initial the input of the start station and end station 
 	switch(q)
 	{
@@ -45,40 +46,50 @@ void submenu(int q, Graph *graph) {
 		printf("8.Line 11 ('Futian' <---> 'Bitou')\n");
 		printf("0.Return to the main menu\n");
 		printf("SELECT: ");
-		scanf("%d", &q);
+		scanf("%d", &temp);
 		printf("\n");	
-		if(q==0)
+		if(temp==0)
 			mainmenu(graph);
-		else if(q<0 || q>8)
+		else if(temp<0 || temp>8)
 		{
 			printf("Please input a correct option!\n\n"); 
-			q=1;
-			submenu(q, graph); 
+			temp=1;
+			submenu(temp, graph); 
 		} 
-			switch(q)
+			switch(temp)
 			{
 				case 1:
 					printf("1.Line 1 ('Luohu' <---> 'Airport East')\n");
 					for(i=0; i<30; i++)
 						printf("ID: %d,  Station: %s\n", line1[i].id, line1[i].name); 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &q);
-					if(q==0)
-					{
+					scanf("%d", &temp);
+					if(temp==0)
+					{              
 						printf("\n");
 						mainmenu(graph);
-					}  
+					}
+					else
+					{
+						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
+						mainmenu(graph); 
+					}
 					break;
 				case 2:
 					printf("2.Line 2 ('Xinxiu' <---> 'Chiwan')\n");
 					for(i=0; i<29; i++)
 						printf("ID: %d,  Station: %s\n", line2[i].id, line2[i].name); 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &q);
-					if(q==0)
+					scanf("%d", &temp);
+					if(temp==0)
 					{
 						printf("\n");
 						mainmenu(graph);
+					}
+					else
+					{
+						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
+						mainmenu(graph); 
 					}
  					break;
 				case 3:
@@ -86,35 +97,50 @@ void submenu(int q, Graph *graph) {
 					for(i=0; i<30; i++)
 						printf("ID: %d,  Station: %s\n", line3[i].id, line3[i].name); 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &q);
-					if(q==0)
+					scanf("%d", &temp);
+					if(temp==0)
 					{
 						printf("\n");
 						mainmenu(graph);
-					}  					
+					}  	
+					else
+					{
+						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
+						mainmenu(graph); 
+					}				
 					break;
 				case 4:
 					printf("4.Line 4 ('Qinghu' <---> 'Futian Checkpoint')\n");
 					for(i=0; i<15; i++)
 						printf("ID: %d,  Station: %s\n", line4[i].id, line4[i].name); 
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &q);
-					if(q==0)
+					scanf("%d", &temp);
+					if(temp==0)
 					{
 						printf("\n");
 						mainmenu(graph);
 					} 
+					else
+					{
+						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
+						mainmenu(graph); 
+					}
 					break;
 				case 5:
 					printf("5.Line 5 ('Huangbeiling' <---> 'Qianhaiwan')\n");
 					for(i=0; i<27; i++)
 						printf("ID: %d,  Station: %s\n", line5[i].id, line5[i].name);  
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &q);
-					if(q==0)
+					scanf("%d", &temp);
+					if(temp==0)
 					{
 						printf("\n");
 						mainmenu(graph);
+					}
+					else
+					{
+						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
+						mainmenu(graph); 
 					}	
 					break;
 				case 6:
@@ -122,23 +148,33 @@ void submenu(int q, Graph *graph) {
 					for(i=0; i<28; i++)
 						printf("ID: %d,  Station: %s\n", line7[i].id, line7[i].name);  
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &q);
-					if(q==0)
+					scanf("%d", &temp);
+					if(temp==0)
 					{
 						printf("\n");
 						mainmenu(graph);
 					}  
+					else
+					{
+						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
+						mainmenu(graph); 
+					}
 					break;
 				case 7:
 					printf("7.Line 9 ('Wenjin' <---> 'Hongshuwan South')\n");
 					for(i=0; i<22; i++)
 						printf("ID: %d,  Station: %s\n", line9[i].id, line9[i].name);  
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &q);
-					if(q==0)
+					scanf("%d", &temp);
+					if(temp==0)
 					{
 						printf("\n");
 						mainmenu(graph);
+					}
+					else
+					{
+						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
+						mainmenu(graph); 
 					}  
 					break;
 				case 8:
@@ -146,17 +182,22 @@ void submenu(int q, Graph *graph) {
 					for(i=0; i<18; i++)
 						printf("ID: %d,  Station: %s\n", line11[i].id, line11[i].name);
 					printf("Input 0 and click enter to return main menu: ");
-					scanf("%d", &q);
-					if(q==0)
+					scanf("%d", &temp);
+					if(temp==0)
 					{
 						printf("\n");
 						mainmenu(graph);
-					}  
+					} 
+					else
+					{
+						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
+						mainmenu(graph); 
+					} 
 					break;
 			}
 		break;
 	case 2: 
-		printf("Find the recommendation path\n");
+		printf("Find the shortest path\n");
 		printf("Please input start station (ID): ");
 		scanf("%d", &s); 
 		printf("Please input end station (ID): ");
@@ -169,11 +210,18 @@ void submenu(int q, Graph *graph) {
 			printf("Please input your start station and end station again\n");
 			submenu(q, graph);
 		}
-		else if(s<0 || s>165 || e<0 || e>165)
+		else if(s<0 || s>165)
 		{
 			q = 2; 
-			printf("Please input a correct station id!\n\n");
-			printf("Please input your start station and end station again\n");
+			printf("Please input a correct id of starting station!\n\n");
+			printf("Please input the start station again\n");
+			submenu(q, graph);
+		}
+		else if(e<0 || e>165) 
+		{
+			q = 2;
+			printf("Please input a correct id of ending station!\n\n");
+			printf("Please input the end station again\n");
 			submenu(q, graph);
 		}
 		else
@@ -193,11 +241,18 @@ void submenu(int q, Graph *graph) {
 			printf("Please input your start station and end station again\n");
 			submenu(q, graph);
 		}
-		else if(s<0 || s>165 || e<0 || e>165)
+		else if(s<0 || s>165)
+		{
+			q = 3; 
+			printf("Please input a correct id of starting station!\n\n");
+			printf("Please input the start station again\n");
+			submenu(q, graph);
+		}
+		else if(e<0 || e>165) 
 		{
 			q = 3;
-			printf("Please input a correct station id!\n\n");
-			printf("Please input your start station and end station again\n");
+			printf("Please input a correct id of ending station!\n\n");
+			printf("Please input the end station again\n");
 			submenu(q, graph);
 		}
 		else
@@ -210,34 +265,28 @@ void submenu(int q, Graph *graph) {
 	}
 } 
 
+/* Loading a station dictionary */
 void Dictionary() {
 	FILE *fp = NULL;		//Initial a object of FILE 
 	int i = 0;				//Initial a factor of loop
 	int j = 0;				//Initial a factor of loop
-	/* Loading a station dictionary */
+	
 	fp = fopen("file\\Metro.txt","r");
 	if (!fp)
 		return -1;
 	while (!feof(fp))
-	{
 		fgets(sd[i++].name,50,fp);
-	}
 	fclose(fp);		//Closing the FILE stream
 	for(i=0;i<TotalStation;i++)
-	{
 		sd[i].name[strlen(sd[i].name)-1]='\0'; 
-	}
-	/* Loading a station dictionary */
 } 
 
+/* Loading the station of each line and mapping from name to id */
 void Mapping() {
 	FILE *fp = NULL;		//Initial a object of FILE 
 	int i = 0;				//Initial a factor of loop
 	int j = 0;				//Initial a factor of loop
 	
-	/* Loading the station of each line and mapping from name to id */
-	/* Tips: this section can add a Queue to avoid double loop that will cause time complexity equal to O(n^2) 
-   		especially some extreme situation, such as the inner loop was be performed until reach the [i]==165 */ 
 	//Mapping the line 1	
 	fp = fopen("file\\Line1.txt","r");
 	i=0;			//Initialing the factor of loop
@@ -260,7 +309,7 @@ void Mapping() {
 	
 	//Mapping the line 2
 	fp = fopen("file\\Line2.txt","r");
-	i=0;			//Initialing the factor of loop
+	i=0;			//Initial the factor of loop
 	if (!fp)
 		return -1;
 	while (!feof(fp))
@@ -280,7 +329,7 @@ void Mapping() {
 	
 	//Mapping the line 3
 	fp = fopen("file\\Line3.txt","r");
-	i=0;			//Initialing the factor of loop
+	i=0;			//Initial the factor of loop
 	if (!fp)
 		return -1;
 	while (!feof(fp))
@@ -300,7 +349,7 @@ void Mapping() {
 	
 	//Mapping the line 4
 	fp = fopen("file\\Line4.txt","r");
-	i=0;			//Initialing the factor of loop
+	i=0;			//Initial the factor of loop
 	if (!fp)
 		return -1;
 	while (!feof(fp))
@@ -320,7 +369,7 @@ void Mapping() {
 	
 	//Mapping the line 5
 	fp = fopen("file\\Line5.txt","r");
-	i=0;			//Initialing the factor of loop
+	i=0;			//Initial the factor of loop
 	if (!fp)
 		return -1;
 	while (!feof(fp))
@@ -340,7 +389,7 @@ void Mapping() {
 	
 	//Mapping the line 7
 	fp = fopen("file\\Line7.txt","r");
-	i=0;			//Initialing the factor of loop
+	i=0;			//Initial the factor of loop
 	if (!fp)
 		return -1;
 	while (!feof(fp))
@@ -360,7 +409,7 @@ void Mapping() {
 	
 	//Mapping the line 9
 	fp = fopen("file\\Line9.txt","r");
-	i=0;			//Initialing the factor of loop
+	i=0;			//Initial the factor of loop
 	if (!fp)
 		return -1;
 	while (!feof(fp))
@@ -380,7 +429,7 @@ void Mapping() {
 	
 	//Mapping the line 11
 	fp = fopen("file\\Line11.txt","r");
-	i=0;			//Initialing the factor of loop
+	i=0;			//Initial the factor of loop
 	if (!fp)
 		return -1;
 	while (!feof(fp))
@@ -397,7 +446,6 @@ void Mapping() {
 				break;
 			}
 	}
-	/* Loading the station of each line and mapping from name to id */
 } 
 
 void GenerateGraph(Graph **graph) {
@@ -405,7 +453,7 @@ void GenerateGraph(Graph **graph) {
 	int j = 0;				//Initial a factor of loop
 	int V = TotalStation;
 	*graph = newGraph(V);
-	/* Generating graph */
+	
 	for(i=0; i<29; i++)
 	{
 		j=i+1;
@@ -447,11 +495,10 @@ void GenerateGraph(Graph **graph) {
 		connectNodes(*graph, line11[i].id, line11[j].id);
 	}  
 	//printf("\n"); printGraph(graph);
-	/* Generating graph */ 
 }
 
 int main(int argc, char *argv[]) {		
-	Graph *graph;	//Initial a graph
+	Graph *graph = NULL;		//Initial a graph
 
 	Dictionary(); 
 	Mapping();

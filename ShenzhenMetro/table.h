@@ -1,6 +1,7 @@
 typedef int bool;
 #define TRUE 1
-#define FALSE 0 
+#define FALSE 0
+#define Infinity INT_MAX   
 
 typedef struct {
 	int id; 
@@ -11,13 +12,13 @@ typedef struct {
 
 void InitTable(int VertexStart, Table *T) {
 	int i;
-	
+	int InitialPath = 999; 
 	for(i=0;i<TotalStation;i++)
 	{
 		T[i].id = i;
 		T[i].known = FALSE;
-		T[i].dist = INT_MAX;
-		T[i].path = 999;
+		T[i].dist = Infinity;	
+		T[i].path = InitialPath;
 	}
 	T[VertexStart].dist = 0; 
 }
@@ -26,8 +27,6 @@ void DisplayTable(Table *T) {
 	int i; 
 	printf("ID\tKnown\tDist\tPath\n");
 	for(i=0;i<TotalStation;i++)
-	{
 		printf("%d\t%d\t%d\t%d\n",T[i].id,T[i].known,T[i].dist,T[i].path);
-	}	
 } 
 
