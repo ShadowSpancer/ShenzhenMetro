@@ -10,19 +10,21 @@ typedef struct {
 	int path;
 }Table;
 
+//Initialize Table 
 void InitTable(int VertexStart, Table *T) {
 	int i;
 	int InitialPath = 999; 
 	for(i=0;i<TotalStation;i++)
 	{
-		T[i].id = i;
-		T[i].known = FALSE;
-		T[i].dist = Infinity;	
-		T[i].path = InitialPath;
+		T[i].id = i;				//update id
+		T[i].known = FALSE;			//Set status of column known as unknown 
+		T[i].dist = Infinity;		//Set status of column distance as infinity 
+		T[i].path = InitialPath;	//Set status of path as 999
 	}
 	T[VertexStart].dist = 0; 
 }
 
+//Function of displaying the table
 void DisplayTable(Table *T) {
 	int i; 
 	printf("ID\tKnown\tDist\tPath\n");

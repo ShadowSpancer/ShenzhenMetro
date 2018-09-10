@@ -52,15 +52,3 @@ void makeEmpty(struct Queue* queue) {
 	queue->rear = queue->capacity-1;
 }
 
-int front(struct Queue* queue) {
-    if (isEmpty(queue))
-        return INT_MIN;
-    return queue->array[queue->front];
-} 
-
-int rear(struct Queue* queue) {
-    if (isEmpty(queue))
-        return INT_MIN;
-    return queue->array[queue->rear];
-}
-

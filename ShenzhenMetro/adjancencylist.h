@@ -57,12 +57,12 @@ void printGraph(Graph *graph) {
 	//Moves down the graph list
 	for (v = 0; v < graph->V; ++v)
 	{
-		struct AdjNode *pCrawl = graph -> list[v].head;
+		struct AdjNode *p = graph -> list[v].head;
 		printf("List at vertex %d:\nhead ", v);
-		while (pCrawl)
+		while (p)
 		{
-			printf("-> %d", pCrawl->pos);
-			pCrawl = pCrawl -> next;
+			printf("-> %d", p->pos);
+			p = p -> next;
 		}
 		printf("\n");
 	}

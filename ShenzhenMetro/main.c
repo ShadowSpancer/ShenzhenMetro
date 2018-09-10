@@ -53,8 +53,7 @@ void submenu(int q, Graph *graph) {
 		else if(temp<0 || temp>8)
 		{
 			printf("Please input a correct option!\n\n"); 
-			temp=1;
-			submenu(temp, graph); 
+			submenu(1, graph); 
 		} 
 			switch(temp)
 			{
@@ -65,12 +64,14 @@ void submenu(int q, Graph *graph) {
 					printf("Input 0 and click enter to return main menu: ");
 					scanf("%d", &temp);
 					if(temp==0)
-					{              
+					{   
+						temp = NULL;           
 						printf("\n");
 						mainmenu(graph);
 					}
 					else
 					{
+						temp = NULL;
 						printf("\nPlaese input a correct option! Redirecting the main menu now!\n"); 
 						mainmenu(graph); 
 					}
@@ -223,7 +224,7 @@ void submenu(int q, Graph *graph) {
 			printf("Please input a correct id of ending station!\n\n");
 			printf("Please input the end station again\n");
 			submenu(q, graph);
-		}
+		}  
 		else
 			BFS(graph, s, e, q); 
 		break;
